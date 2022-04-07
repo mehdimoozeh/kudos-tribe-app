@@ -1,7 +1,6 @@
-import { Body, Injectable, Post } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { TribeClient } from '@tribeplatform/gql-client';
 import { ConfigService } from '@nestjs/config';
-import { TribeWebHooksBodyDto, TribeWebHooksResponseDto } from './dtos';
 
 @Injectable()
 export class AppService {
@@ -29,14 +28,5 @@ export class AppService {
 
   getHello(): string {
     return 'Hello World!';
-  }
-
-  @Post()
-  tribeWebhooks(@Body() body: TribeWebHooksBodyDto): TribeWebHooksResponseDto {
-    return {
-      type: body.type,
-      status: 'SUCCEEDED',
-      data: body.data,
-    };
   }
 }
