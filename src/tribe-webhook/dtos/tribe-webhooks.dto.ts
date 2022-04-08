@@ -1,20 +1,33 @@
 class TribeWebhookActorDto {
   id: ID;
-  roleId: ID;
-  roleType: string;
 }
 
 class TribeWebhookObjectDto {
   id: ID;
+  networkId: ID;
+  spaceId: ID;
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date;
+  status: 'PUBLISHED';
+  createdById: ID;
+  ownerId: ID;
+  isAnonymous: boolean;
+  shortContent: HTML;
+  isReply: boolean;
+  isHidden: boolean;
 }
 
 class TribeWebhooksTargetDto {
   networkId: ID;
+  organizationId: ID;
+  spaceId: ID;
+  memberId: ID;
 }
 
 class TribeWebhooksDataDto {
   time: Date;
-  name: 'space.created' | 'member.created';
+  name: 'post.published';
   noun: string;
   shortDescription: string;
   verb: 'CREATED';
@@ -26,9 +39,7 @@ class TribeWebhooksDataDto {
 
 export class TribeWebhooksBodyDto {
   networkId: ID; // The community ID
-  context: string; // The context of the action
   entityId: ID; // The ID of the context
-  currentSettings: unknown;
   type: 'SUBSCRIPTION'; // The type of webhook request
   data: TribeWebhooksDataDto;
 }
