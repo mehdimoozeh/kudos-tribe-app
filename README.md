@@ -10,6 +10,10 @@ Help communities to be stronger with power of appreciation
 6. [ ] Describe your idea and how you are going to implement it?
 7. [ ] Technical tasks in detail
     1. [x] Get sample data of hooks that you subscribed.
-    2. [ ] Define DTOs
+    2. [x] Define DTOs
     3. [ ] [Verifying webhook requests](https://partners.tribe.so/docs/guide/webhooks/getting-started/#verifying-webhook-requests)
-    4. [ ] Persist Data in MongoDB
+    4. [ ] Data ID check! ignore duplicated messages!
+    5. [ ] Pass verified data into service - call service method
+    6. [ ] find out is kudos emoji included or not? Count Kudos in message!
+    7. [ ] Who is going to receive these kudos?
+    8. [ ] Persist Data in MongoDB
