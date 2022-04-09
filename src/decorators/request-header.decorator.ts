@@ -17,7 +17,6 @@ export const RequestHeader = createParamDecorator(
       const validationErrors = errors.map((obj) =>
         Object.values(obj.constraints),
       );
-      console.log(validationErrors);
       throw new HttpException(
         `Validation failed : ${validationErrors}`,
         HttpStatus.BAD_REQUEST,
