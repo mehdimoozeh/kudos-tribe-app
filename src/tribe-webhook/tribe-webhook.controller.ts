@@ -10,6 +10,6 @@ export class TribeWebhookController {
     @RequestHeader(TribeWebhooksHeadersDto) headers: TribeWebhooksHeadersDto,
   ) {
     console.log(headers);
-    // console.log(body);
+    console.log(body);
   }
 }
