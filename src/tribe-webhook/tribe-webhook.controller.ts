@@ -11,8 +11,7 @@ export class TribeWebhookController {
   tribeWebhooks(
     @Body() body: TribeWebhooksBodyDto,
     @RequestHeader(TribeWebhooksHeadersDto) headers: TribeWebhooksHeadersDto,
-  ) {
+  ): void {
     this.tribeWebhookService.handleWebhookRequest(body);
-    return true;
   }
 }

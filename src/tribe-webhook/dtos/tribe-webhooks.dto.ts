@@ -1,5 +1,5 @@
 import {
-  Equals,
+  IsArray,
   IsBoolean,
   IsDate,
   IsDefined,
@@ -47,6 +47,10 @@ class TribeWebhookObjectDto {
 
   @IsString()
   shortContent: HTML;
+
+  @IsArray()
+  @IsString({})
+  mentionedMembers: string[];
 
   @IsBoolean()
   isReply: boolean;

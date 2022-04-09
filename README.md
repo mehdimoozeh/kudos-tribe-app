@@ -14,6 +14,6 @@ Help communities to be stronger with power of appreciation
     3. [ ] Follow devHub - [Verifying webhook requests](https://partners.tribe.so/docs/guide/webhooks/getting-started/#verifying-webhook-requests)
     4. [x] Data ID check! ignore duplicated messages!
     5. [x] Pass verified data into service - call service method
-    6. [ ] find out is kudos emoji included or not? Count Kudos in message!
+    6. [x] find out is kudos emoji included or not? Count Kudos in message!
     7. [ ] Who is going to receive these kudos?
     8. [ ] Persist Data in MongoDB
