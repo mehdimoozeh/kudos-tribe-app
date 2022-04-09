@@ -10,6 +10,7 @@ import { validate, ValidationError } from 'class-validator';
 export const RequestHeader = createParamDecorator(
   async (value: any, ctx: ExecutionContext) => {
     const headers = ctx.switchToHttp().getRequest().headers;
+    console.log(JSON.stringify(headers));
     const dto = plainToClass(value, headers);
 
     const errors: ValidationError[] = await validate(dto);
