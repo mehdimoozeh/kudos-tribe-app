@@ -115,5 +115,5 @@ export class TribeWebhooksBodyDto {
 export class TribeWebhooksHeadersDto {
   @IsDefined()
   @IsString()
-  readonly 'X-Tribe-Signature': string;
+  readonly 'x-tribe-signature': string;
 }
