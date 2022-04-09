@@ -115,8 +115,5 @@ export class TribeWebhooksBodyDto {
 export class TribeWebhooksHeadersDto {
   @IsDefined()
   @IsString()
-  @Equals(process.env['TRIBE_SIGNING_SECRET'], {
-    message: 'Not Valid!',
-  })
   readonly 'X-Tribe-Signature': string;
 }
