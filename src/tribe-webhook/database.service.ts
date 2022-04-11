@@ -22,9 +22,9 @@ export class DatabaseService {
     return result;
   }
 
-  public addNewMember(member: ID): boolean {
+  public addNewMember(member: ID, name: string): boolean {
     this.isMemberExist(member);
-    this.list[member] = new KudosModel(member);
+    this.list[member] = new KudosModel(member, name);
     return true;
   }
 

@@ -1,12 +1,14 @@
 export class KudosModel {
   private member: ID;
+  private name: string;
   private dayCapacity: number;
   private remainingKudos: number;
   private given: { [member: ID]: number }[] = [];
   private received: { [member: ID]: number }[] = [];
 
-  constructor(member: ID) {
+  constructor(member: ID, name: string) {
     this.member = member;
+    this.name = name;
     this.dayCapacity = 5;
     this.remainingKudos = this.dayCapacity;
   }

@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { TribeClient } from '@tribeplatform/gql-client';
 import { ConfigService } from '@nestjs/config';
-import { DatabaseService } from './tribe-webhook/database.service';
+import { DatabaseService } from '../tribe-webhook/database.service';
 
 @Injectable()
 export class AppService {
@@ -27,8 +27,9 @@ export class AppService {
     });
     this.tribeClient.setToken(this.tribeAccessToken);
     this.tribeClient.members.list({ limit: 10 }).then((members) => {
-      this.logger.verbose(members);
-      this.databaseService.addNewMember('123');
+      members.edges.map((edge) => {
+        this.databaseService.addNewMember(edge.node.id, edge.node.name);
+      });
       this.databaseService.print();
     });
   }
