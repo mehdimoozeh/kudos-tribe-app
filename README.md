@@ -23,7 +23,9 @@ Help communities to be stronger with power of appreciation
     12. [ ] Unit tests
 8. [ ] Complete Readme.md
 9. [ ] Future features 
-   1. [ ] Leaderboard with React SDk
+   1. [ ] Leaderboard with React SDK
    2. [ ] Custom emoji
    3. [ ] Setting for number of Kudos in a day!
    4. [ ] Persist Data (MongoDB or Redis)
+   5. [ ] Different network
+   6. [ ] Engagement stuff (bouns.ly, Taco)
