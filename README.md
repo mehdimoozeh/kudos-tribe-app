@@ -15,9 +15,12 @@ Help communities to be stronger with power of appreciation
     4. [x] Data ID check! ignore duplicated messages!
     5. [x] Pass verified data into service - call service method
     6. [x] find out is kudos emoji included or not? Count Kudos in message!
-    7. [ ] Get List of users in the community.
-    8. [ ] What kind of data structure you will use for saving data in memory?
-    9. [ ] Count both receiver and giver.
+    7. [x] Get List of users in the community.
+    8. [x] What kind of data structure you will use for saving data in memory?
+    9. [x] Count both receiver and giver.
+    10. [ ] Add new comer
+    11. [ ] Kudos bot and report Space
+    12. [ ] Unit tests
 8. [ ] Complete Readme.md
 9. [ ] Future features 
    1. [ ] Leaderboard with React SDk
