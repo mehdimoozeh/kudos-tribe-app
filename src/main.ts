@@ -9,7 +9,7 @@ async function bootstrap() {
   const configService = app.get(ConfigService);
   app.useGlobalPipes(
     new ValidationPipe({
-      skipMissingProperties: false,
+      skipMissingProperties: true,
       enableDebugMessages: configService.get('NODE_ENV') !== 'production',
     }),
   );
