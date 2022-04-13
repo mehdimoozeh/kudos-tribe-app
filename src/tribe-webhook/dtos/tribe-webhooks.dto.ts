@@ -1,6 +1,5 @@
 import {
   IsArray,
-  IsBoolean,
   IsDate,
   IsDefined,
   IsIn,
@@ -9,42 +8,19 @@ import {
 } from 'class-validator';
 import { WebhookEventName } from '../constants';
 
-class TribeWebhookActorDto {
-  @IsString()
-  id: ID;
-}
-
 class TribeWebhookObjectDto {
   @IsString()
   id: ID;
-
+  // Unused information!
   @IsString()
   networkId: ID;
-
   @IsString()
   spaceId: ID;
+}
 
-  @IsDate()
-  createdAt: Date;
-
-  @IsDate()
-  updatedAt: Date;
-
-  @IsDate()
-  publishedAt: Date;
-
-  @IsString()
-  @IsIn(['PUBLISHED'])
-  status: 'PUBLISHED';
-
+export class TribeWebhookPostObjectDto extends TribeWebhookObjectDto {
   @IsString()
   createdById: ID;
-
-  @IsString()
-  ownerId: ID;
-
-  @IsBoolean()
-  isAnonymous: boolean;
 
   @IsString()
   shortContent: HTML;
@@ -52,12 +28,11 @@ class TribeWebhookObjectDto {
   @IsArray()
   @IsString({})
   mentionedMembers: string[];
+}
 
-  @IsBoolean()
-  isReply: boolean;
-
-  @IsBoolean()
-  isHidden: boolean;
+export class TribeWebhookMemberObjectDto extends TribeWebhookObjectDto {
+  @IsString()
+  name: string;
 }
 
 class TribeWebhooksTargetDto {
@@ -74,7 +49,7 @@ class TribeWebhooksTargetDto {
   memberId: ID;
 }
 
-class TribeWebhooksDataDto {
+export class TribeWebhooksDataDto {
   @IsDate()
   time: Date;
 
@@ -82,19 +57,10 @@ class TribeWebhooksDataDto {
   @IsIn(Object.values(WebhookEventName))
   name: WebhookEventName;
 
-  @IsString()
-  noun: string;
-
-  @IsString()
-  @IsIn(['CREATED'])
-  verb: 'CREATED';
-
   @IsObject()
-  actor: TribeWebhookActorDto; // The member or entity that performed the action
+  object: TribeWebhookPostObjectDto | TribeWebhookMemberObjectDto; // The main object involved in the action
 
-  @IsObject()
-  object: TribeWebhookObjectDto; // The main object involved in the action
-
+  // Unused information!
   @IsObject()
   target: TribeWebhooksTargetDto; // The ID of the target and all relevant objects
 

@@ -1,6 +1,9 @@
 import { Injectable, Logger } from '@nestjs/common';
-import type { TribeWebhooksBodyDto } from './dtos';
 import { DatabaseService } from './database.service';
+import type {
+  TribeWebhookMemberObjectDto,
+  TribeWebhookPostObjectDto,
+} from './dtos';
 
 @Injectable()
 export class TribeWebhookService {
@@ -17,14 +20,14 @@ export class TribeWebhookService {
     return emojis.filter((item) => item === this.KUDOS_EMOJI_UNICODE).length;
   }
 
-  public checkNewPost(input: TribeWebhooksBodyDto): void {
-    if (this.databaseService.isDataIdExist(input.data.id)) {
-      this.logger.log(`Duplicated webhook request ${input.data.id}`);
+  public checkNewPost(dataId: ID, object: TribeWebhookPostObjectDto): void {
+    if (this.databaseService.isDataIdExist(dataId)) {
+      this.logger.log(`Duplicated webhook request ${dataId}`);
       return;
     }
-    const countedKudos = this.detectEmojis(input.data.object.shortContent);
-    const giver = input.data.object.createdById;
-    const mentionedPeople = input.data.object.mentionedMembers.filter(
+    const countedKudos = this.detectEmojis(object.shortContent);
+    const giver = object.createdById;
+    const mentionedPeople = object.mentionedMembers.filter(
       (member) => member !== giver,
     );
     if (countedKudos === 0 || mentionedPeople.length === 0) return;
@@ -34,15 +37,10 @@ export class TribeWebhookService {
     });
     this.databaseService.save(giver, mentionedPeople, countedKudos);
     this.databaseService.print();
-    // console.log(input.data.object);
-    // console.log(input.data.target);
-    // Rest of logic
   }
 
-  public newMember(input: TribeWebhooksBodyDto): void {
-    this.databaseService.addNewMember(
-      input.data.object.id,
-      input.data.object.id,
-    );
+  public newMember(object: TribeWebhookMemberObjectDto): void {
+    this.databaseService.addNewMember(object.id, object.name);
+    this.databaseService.print();
   }
 }
