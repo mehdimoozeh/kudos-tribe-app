@@ -18,7 +18,7 @@ Help communities to be stronger with power of appreciation
     7. [x] Get List of users in the community.
     8. [x] What kind of data structure you will use for saving data in memory?
     9. [x] Count both receiver and giver.
-    10. [ ] Add new comer
+    10. [x] Add new comer
     11. [ ] Kudos bot and report Space
     12. [ ] Reset Kudos everyday.
     13. [ ] Monthly leaderboard!
