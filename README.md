@@ -1,7 +1,6 @@
 # 🍩 Kudos a Tribe App
 Help communities to be stronger with power of appreciation.  
-I was part of a community that practices English from around the world. The most notable thing about that group is they were really kind and thankful. So that brings the idea that we can have a tool to improve and gamify this kind of behavior. Now with Kudos, you can give people a donut 🍩 as a “Thank You”. We count them all and then at the end of the month you get the most receivers and givers.  
-Evidently, it is not novel, and there are some applications that do that, like bouns.ly and Taco.
+I was part of a community that practices English from around the world. The most notable thing about that group is they were really kind and thankful. So that brings the idea that we can have a tool to improve and gamify this kind of behavior. Now with Kudos, you can give people a donut 🍩 as a “Thank You”. We count them all and then at the end of the month you get the most receivers and givers.
 
 ## Give someone Kudos, How?
 Just mentioned the person and put a donut near their name.  
