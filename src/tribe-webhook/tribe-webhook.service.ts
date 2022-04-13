@@ -17,7 +17,7 @@ export class TribeWebhookService {
     return emojis.filter((item) => item === this.KUDOS_EMOJI_UNICODE).length;
   }
 
-  public handleWebhookRequest(input: TribeWebhooksBodyDto) {
+  public checkNewPost(input: TribeWebhooksBodyDto): void {
     if (this.databaseService.isDataIdExist(input.data.id)) {
       this.logger.log(`Duplicated webhook request ${input.data.id}`);
       return;
@@ -37,5 +37,12 @@ export class TribeWebhookService {
     // console.log(input.data.object);
     // console.log(input.data.target);
     // Rest of logic
+  }
+
+  public newMember(input: TribeWebhooksBodyDto): void {
+    this.databaseService.addNewMember(
+      input.data.object.id,
+      input.data.object.id,
+    );
   }
 }

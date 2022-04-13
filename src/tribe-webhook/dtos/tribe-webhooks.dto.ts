@@ -7,6 +7,7 @@ import {
   IsObject,
   IsString,
 } from 'class-validator';
+import { WebhookEventName } from '../constants';
 
 class TribeWebhookActorDto {
   @IsString()
@@ -78,8 +79,8 @@ class TribeWebhooksDataDto {
   time: Date;
 
   @IsString()
-  @IsIn(['post.published'])
-  name: 'post.published';
+  @IsIn(Object.values(WebhookEventName))
+  name: WebhookEventName;
 
   @IsString()
   noun: string;
