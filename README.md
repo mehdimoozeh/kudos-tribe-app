@@ -1,5 +1,27 @@
-## Kudos a Tribe App
-Help communities to be stronger with power of appreciation
+# 🍩 Kudos a Tribe App
+Help communities to be stronger with power of appreciation.  
+I was part of a community that practices English from around the world. The most notable thing about that group is they were really kind and thankful. So that brings the idea that we can have a tool to improve and gamify this kind of behavior. Now with Kudos, you can give people a donut 🍩 as a “Thank You”. We count them all and then at the end of the month you get the most receivers and givers.  
+Evidently, it is not novel, and there are some applications that do that, like bouns.ly and Taco.
+
+## Give someone Kudos, How?
+Just mentioned the person and put a donut near their name.  
+`@Mohammad 🍩 Thank you for participation.`  
+
+![Sample](sample.png)
+
+# Technical stuff
+## Installation
+```
+# Install dependencies
+yarn install
+
+# development mode
+yarn run start:dev
+
+# Or production mode
+yarn build
+yarn run start:prod
+```
 
 ## Tasks
 1. [x] Check those videos from Siavash (2 times) and find out what they want!
@@ -23,7 +45,7 @@ Help communities to be stronger with power of appreciation
     12. [x] Reset Kudos everyday.
     13. [ ] Monthly leaderboard!
     14. [ ] Unit tests
-8. [ ] Complete Readme.md
+8. [x] Complete Readme.md
 9. [ ] Future features 
    1. [ ] Leaderboard with React SDK
    2. [ ] Custom emoji
