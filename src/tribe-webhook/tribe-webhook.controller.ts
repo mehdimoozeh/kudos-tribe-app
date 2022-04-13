@@ -32,7 +32,6 @@ export class TribeWebhookController {
         );
         break;
     }
-    console.log(body);
     return { status: 'SUCCEEDED' };
   }
 }
