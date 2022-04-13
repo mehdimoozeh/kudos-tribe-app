@@ -1,4 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
+import { Cron } from '@nestjs/schedule';
 import { KudosModel } from './kudos.model';
 
 @Injectable()
@@ -9,6 +10,12 @@ export class DatabaseService {
 
   private isMemberExist(member: ID): boolean {
     return !!this.list[member];
+  }
+
+  @Cron('0 0 * * *')
+  public resetKudosCount() {
+    Object.values(this.list).forEach((member) => member.resetRemainingKudos());
+    this.logger.verbose('Kudos counter retested');
   }
 
   public saveDataId(dataId: ID): void {

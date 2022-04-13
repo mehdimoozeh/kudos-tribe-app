@@ -20,7 +20,7 @@ Help communities to be stronger with power of appreciation
     9. [x] Count both receiver and giver.
     10. [x] Add new comer
     11. [ ] Kudos bot and report Space
-    12. [ ] Reset Kudos everyday.
+    12. [x] Reset Kudos everyday.
     13. [ ] Monthly leaderboard!
     14. [ ] Unit tests
 8. [ ] Complete Readme.md

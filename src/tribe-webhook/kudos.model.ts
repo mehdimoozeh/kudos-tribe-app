@@ -13,6 +13,10 @@ export class KudosModel {
     this.remainingKudos = this.dayCapacity;
   }
 
+  resetRemainingKudos() {
+    this.remainingKudos = this.dayCapacity;
+  }
+
   give(receivers: ID[], count: number): number | Error {
     const totalGiven = receivers.length * count;
     if (totalGiven > this.remainingKudos)
