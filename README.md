@@ -40,7 +40,7 @@ yarn run start:prod
     8. [x] What kind of data structure you will use for saving data in memory?
     9. [x] Count both receiver and giver.
     10. [x] Add new comer
-    11. [ ] Kudos bot and report Space
+    11. [x] Create report space
     12. [x] Reset Kudos everyday.
     13. [ ] Monthly leaderboard!
     14. [ ] Unit tests
