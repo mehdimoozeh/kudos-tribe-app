@@ -42,7 +42,7 @@ yarn run start:prod
     10. [x] Add new comer
     11. [x] Create report space
     12. [x] Reset Kudos everyday.
-    13. [ ] Monthly leaderboard!
+    13. [x] Monthly leaderboard!
     14. [ ] Unit tests
 8. [x] Complete Readme.md
 9. [ ] Future features 
