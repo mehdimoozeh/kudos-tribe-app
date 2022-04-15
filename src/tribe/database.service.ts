@@ -37,7 +37,7 @@ export class DatabaseService {
 
   public saveDataId(dataId: ID): void {
     this.webhookIds.add(dataId);
-    this.logger.log(`Saved! data.id: ${dataId}`);
+    this.logger.log(`Webhook message id saved! ${dataId}`);
   }
 
   public isDataIdExist(dataId: ID): boolean {
