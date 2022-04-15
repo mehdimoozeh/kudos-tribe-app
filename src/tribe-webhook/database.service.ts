@@ -12,6 +12,23 @@ export class DatabaseService {
     return !!this.list[member];
   }
 
+  public getLeaderboard() {
+    return Object.values(this.list)
+      .map(
+        (member) =>
+          [member.name, member.totalReceived, member.totalGiven] as [
+            string,
+            number,
+            number,
+          ],
+      )
+      .sort((m, n) => {
+        if (m[1] < n[1]) return 1;
+        else if (m[1] > n[1]) return -1;
+        else return 0;
+      });
+  }
+
   @Cron('0 0 * * *')
   public resetKudosCount() {
     Object.values(this.list).forEach((member) => member.resetRemainingKudos());
