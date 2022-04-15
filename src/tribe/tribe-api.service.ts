@@ -58,7 +58,7 @@ export class TribeApiService {
     try {
       const spaceId = await this.isKudosSpaceExist();
       if (spaceId) {
-        this.logger.verbose(`Space already created.`);
+        this.logger.verbose(`Kudos space already exist.`);
         return spaceId;
       }
       const kudosSpace = await this.tribeClient.spaces.create({
@@ -73,6 +73,7 @@ export class TribeApiService {
           whoCanReact: [SpaceRoleType.MEMBER],
         },
       });
+      this.logger.verbose(`Kudos space created! ${kudosSpace.id}`);
       return kudosSpace.id;
     } catch (error) {
       this.logger.error(error);
