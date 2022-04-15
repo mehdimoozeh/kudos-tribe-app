@@ -188,7 +188,7 @@ export class TribeApiService {
     return postDiscussionType.node.id;
   }
 
-  private updateLeaderboardAtKudosSpace(spaceId: ID) {
+  private updateLeaderboardAtKudosSpace(spaceId: ID): void {
     const leaderBoardPost = this.getLeaderBoardAsPost();
     this.tribeClient.posts.list({ limit: 2, spaceId }).then((posts) => {
       posts.edges.some((edge) => {
@@ -204,8 +204,9 @@ export class TribeApiService {
           leaderBoardPost.title,
           leaderBoardPost.content,
         );
+      } else {
+        this.updateLeaderBoardPost();
       }
-      this.updateLeaderBoardPost();
     });
   }
 }
