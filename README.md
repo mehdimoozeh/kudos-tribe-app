@@ -52,4 +52,5 @@ yarn run start:prod
    4. [ ] Persist Data (MongoDB or Redis)
    5. [ ] Different network
    6. [ ] Engagement stuff (bouns.ly, Taco)
-10. [ ] Follow up [devHub](https://community.tribe.so/member/MSHsBS0JmC)
+10. [x] Follow up [devHub](https://community.tribe.so/member/MSHsBS0JmC)
+11. [ ] A video to describe this project
