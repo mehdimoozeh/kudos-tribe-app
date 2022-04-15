@@ -40,7 +40,7 @@ export class TribeWebhookService {
       mentionedPeople,
     });
     this.databaseService.save(giver, mentionedPeople, countedKudos);
-    this.databaseService.print();
+    this.tribeApiService.updateLeaderBoardPost();
   }
 
   public newMember(object: TribeWebhookMemberObjectDto): void {
