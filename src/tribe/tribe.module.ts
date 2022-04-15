@@ -10,4 +10,4 @@ import { ScheduleModule } from '@nestjs/schedule';
   controllers: [TribeWebhookController],
   exports: [DatabaseService],
 })
-export class TribeWebhookModule {}
+export class TribeModule {}

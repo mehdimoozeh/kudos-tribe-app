@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { TribeClient } from '@tribeplatform/gql-client';
 import { ConfigService } from '@nestjs/config';
-import { DatabaseService } from '../tribe-webhook/database.service';
+import { DatabaseService } from '../tribe/database.service';
 import {
   PostMappingTypeEnum,
   PostTypeContext,

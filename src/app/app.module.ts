@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { ConfigModule } from '@nestjs/config';
-import { TribeWebhookModule } from '../tribe-webhook/tribe-webhook.module';
+import { TribeModule } from '../tribe/tribe.module';
 import { AppService } from './app.service';
 
 @Module({
-  imports: [ConfigModule.forRoot(), TribeWebhookModule],
+  imports: [ConfigModule.forRoot(), TribeModule],
   controllers: [AppController],
   providers: [AppService],
 })
