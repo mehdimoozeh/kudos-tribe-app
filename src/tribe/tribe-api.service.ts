@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { TribeClient } from '@tribeplatform/gql-client';
 import { ConfigService } from '@nestjs/config';
-import { DatabaseService } from '../tribe/database.service';
+import { DatabaseService } from './database.service';
 import {
   PostMappingTypeEnum,
   PostTypeContext,
@@ -9,11 +9,12 @@ import {
 } from '@tribeplatform/gql-client/types';
 
 @Injectable()
-export class AppService {
+export class TribeApiService {
   private tribeClient: TribeClient;
   private tribeAccessToken: string;
   private readonly logger = new Logger(DatabaseService.name);
   private reportSpaceId: ID = '';
+  private leaderboardPostId: ID = '';
 
   private readonly LEADERBOARD_POST_TITLE = 'Kudos LeaderBoard';
 
@@ -93,7 +94,7 @@ export class AppService {
     this.updateLeaderboardAtKudosSpace(this.reportSpaceId);
   }
 
-  public getLeaderBoardAsHTML() {
+  private getLeaderBoardAsHTML() {
     const leaderboard = this.databaseService.getLeaderboard();
     let htmlLeaderboard = '<table>';
     leaderboard.forEach((item, index) => {
@@ -139,6 +140,7 @@ export class AppService {
         },
       })
       .then((result) => {
+        this.leaderboardPostId = result.id;
         this.logger.verbose(`Leaderboard post created! ${result.id}`);
       })
       .catch((error) => {
@@ -146,21 +148,22 @@ export class AppService {
       });
   }
 
-  private updateLeaderBoardPost(postId: ID, title: string, content: string) {
+  public updateLeaderBoardPost(): void {
+    const leaderboardPost = this.getLeaderBoardAsPost();
     this.tribeClient.posts
       .update({
-        id: postId,
+        id: this.leaderboardPostId,
         input: {
           mappingFields: [
             {
               key: 'title',
               type: PostMappingTypeEnum.TEXT,
-              value: title,
+              value: leaderboardPost.title,
             },
             {
               key: 'content',
               type: PostMappingTypeEnum.HTML,
-              value: content,
+              value: leaderboardPost.content,
             },
           ],
           publish: true,
@@ -188,26 +191,21 @@ export class AppService {
   private updateLeaderboardAtKudosSpace(spaceId: ID) {
     const leaderBoardPost = this.getLeaderBoardAsPost();
     this.tribeClient.posts.list({ limit: 2, spaceId }).then((posts) => {
-      let leaderboardPostId = '';
       posts.edges.some((edge) => {
         if (edge.node.title === this.LEADERBOARD_POST_TITLE) {
-          leaderboardPostId = edge.node.id;
+          this.leaderboardPostId = edge.node.id;
           return true;
         }
         return false;
       });
-      if (!leaderboardPostId) {
+      if (!this.leaderboardPostId) {
         this.createLeaderboardPost(
           spaceId,
           leaderBoardPost.title,
           leaderBoardPost.content,
         );
       }
-      this.updateLeaderBoardPost(
-        leaderboardPostId,
-        leaderBoardPost.title,
-        leaderBoardPost.content,
-      );
+      this.updateLeaderBoardPost();
     });
   }
 }

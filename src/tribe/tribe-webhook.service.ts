@@ -4,13 +4,17 @@ import type {
   TribeWebhookMemberObjectDto,
   TribeWebhookPostObjectDto,
 } from './dtos';
+import { TribeApiService } from './tribe-api.service';
 
 @Injectable()
 export class TribeWebhookService {
   private readonly KUDOS_EMOJI_UNICODE = '\u{1F369}'; // 🍩
   private readonly logger = new Logger(TribeWebhookService.name);
 
-  constructor(private readonly databaseService: DatabaseService) {}
+  constructor(
+    private readonly databaseService: DatabaseService,
+    private readonly tribeApiService: TribeApiService,
+  ) {}
 
   private detectEmojis(text: string): number {
     const emojis: string[] = text.match(/(\p{Emoji})+/gu) || [];
@@ -41,6 +45,6 @@ export class TribeWebhookService {
 
   public newMember(object: TribeWebhookMemberObjectDto): void {
     this.databaseService.addNewMember(object.id, object.name);
-    this.databaseService.print();
+    this.tribeApiService.updateLeaderBoardPost();
   }
 }
